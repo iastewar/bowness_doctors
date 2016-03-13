@@ -1,27 +1,11 @@
-var welcome = require('./index/welcome')('loading...');
+var welcome = require('./index/welcome');
 var contactUs = require('./index/contact-us');
-var afterHoursCare = require('./index/after-hours-care')('loading...');
-var officeHours = require('./index/office-hours')('loading...');
-var officePolicy = require('./index/office-policy')('loading...');
-var patientServices = require('./index/patient-services')('loading...');
-var uninsuredServices = require('./index/uninsured-services')('loading...');
+var afterHoursCare = require('./index/after-hours-care');
+var officeHours = require('./index/office-hours');
+var officePolicy = require('./index/office-policy');
+var patientServices = require('./index/patient-services');
+var uninsuredServices = require('./index/uninsured-services');
 // var aboutUs = require('./index/about-us');
-
-var data = {};
-
-// callback from ajax function to get page data
-var success = function(res) {
-  res.data.forEach(function(d) {
-    data[d.section] = d.content;
-  });
-  welcome = require('./index/welcome')(data['welcome']);
-  afterHoursCare = require('./index/after-hours-care')(data['after-hours-care']);
-  officeHours = require('./index/office-hours')(data['office-hours']);
-  officePolicy = require('./index/office-policy')(data['office-policy']);
-  patientServices = require('./index/patient-services')(data['patient-services']);
-  uninsuredServices = require('./index/uninsured-services')(data['uninsured-services']);
-  setInitialPage();
-}
 
 var setInitialPage = function() {
   setPage(page);
@@ -101,14 +85,6 @@ window.onpopstate = function(e) {
 };
 
 $(function() {
-
-  // AJAX call to retrive data
-  $.ajax({
-    dataType: "json",
-    url: "/",
-    success: success
-  });
-
   setInitialPage();
 
   $("#menu-toggle").on("click", function(e) {

@@ -56,8 +56,8 @@ var getData = function(callback) {
   });
 }
 
-var attrs = function(req, additional) {
-  var ret = {user: req.user, doctor: '', name: '', email: '', phone: '', message: '', errorMessage: req.flash('errorMessage'), successMessage: req.flash('successMessage')};
+var attrs = function(req, data, additional) {
+  var ret = {data: data, user: req.user, doctor: '', name: '', email: '', phone: '', message: '', errorMessage: req.flash('errorMessage'), successMessage: req.flash('successMessage')};
   for (var key in additional) {
     if (additional.hasOwnProperty(key)) {
       ret[key] = additional[key];
@@ -69,50 +69,43 @@ var attrs = function(req, additional) {
 /* GET welcome page. */
 router.get('/', function(req, res, next) {
   getData(function(data) {
-    res.format({
-      html: function() {
-        res.render('index', attrs(req, {title: 'Bowness Doctors', page: 'welcome'}));
-      },
-      json: function() {
-        res.json({data: data});
-      }
-    });
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors', page: 'welcome'}));
   });
 });
 
 router.get('/contact-us', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - Contact Us', page: 'contact-us'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - Contact Us', page: 'contact-us'}));
   });
 });
 
 router.get('/office-hours', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - Office Hours', page: 'office-hours'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - Office Hours', page: 'office-hours'}));
   });
 });
 
 router.get('/after-hours-care', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - After Hours Care', page: 'after-hours-care'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - After Hours Care', page: 'after-hours-care'}));
   });
 });
 
 router.get('/patient-services', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - Patient Services', page: 'patient-services'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - Patient Services', page: 'patient-services'}));
   });
 });
 
 router.get('/uninsured-services', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - Uninsured Services', page: 'uninsured-services'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - Uninsured Services', page: 'uninsured-services'}));
   });
 });
 
 router.get('/office-policy', function(req, res, next) {
   getData(function(data) {
-    res.render('index', attrs(req, {title: 'Bowness Doctors - Office Policy', page: 'office-policy'}));
+    res.render('index', attrs(req, data, {title: 'Bowness Doctors - Office Policy', page: 'office-policy'}));
   });
 });
 
@@ -124,49 +117,50 @@ router.post('/contact', function(req, res) {
   var message = req.body.message;
 
   if (!(doctor && name && email && phone && message)) {
-    res.render('index', { user: req.user, title: 'Bowness Doctors - Contact Us', page: 'contact-us', doctor: doctor, name: name, email: email, phone: phone, message: message, errorMessage: 'All fields must be filled in', successMessage: ''});
-    return;
-  }
-
-  // create reusable transporter object using the default SMTP transport
-  var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      user: 'test@test.com',
-      pass: 'test'
-    }
-  });
-
-  // setup e-mail data with unicode symbols
-  var mailOptions = {
-      from: name + ' <' + email + '>',
-      to: 'iastewar555@gmail.com',
-      subject: 'Website Submission',
-      text: 'You have received an email submission with the following details:\n' +
-            'Doctor: ' + doctor + '\n' +
-            'Name: ' + name + '\n' +
-            'Email Address: ' + email + '\n' +
-            'Phone Number: ' + phone + '\n' +
-            'Message: ' + message,
-      html: '<p>You have received an email submission with the following details:</p>' +
-            '<p><strong>Doctor</strong>: ' + doctor + '</p>' +
-            '<p><strong>Name</strong>: ' + name + '</p>' +
-            '<p><strong>Email Address</strong>: ' + email + '</p>' +
-            '<p><strong>Phone Number</strong>: ' + phone + '</p>' +
-            '<p><strong>Message</strong>: ' + message + '</p>'
-  };
-
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-          console.log(error);
-          req.flash('errorMessage', 'Error: the email was not sent. It seems there was a server side problem.');
-      } else {
-        console.log('Email Sent: ' + info.response);
-        req.flash('successMessage', 'Your email has been sent!');
+    getData(function(data) {
+      res.render('index', { data: data, user: req.user, title: 'Bowness Doctors - Contact Us', page: 'contact-us', doctor: doctor, name: name, email: email, phone: phone, message: message, errorMessage: 'All fields must be filled in', successMessage: ''});
+    });
+  } else {
+    // create reusable transporter object using the default SMTP transport
+    var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'test@test.com',
+        pass: 'test'
       }
-      res.redirect('/');
-  });
+    });
+
+    // setup e-mail data with unicode symbols
+    var mailOptions = {
+        from: name + ' <' + email + '>',
+        to: 'test@test.com',
+        subject: 'Website Submission',
+        text: 'You have received an email submission with the following details:\n' +
+              'Doctor: ' + doctor + '\n' +
+              'Name: ' + name + '\n' +
+              'Email Address: ' + email + '\n' +
+              'Phone Number: ' + phone + '\n' +
+              'Message: ' + message,
+        html: '<p>You have received an email submission with the following details:</p>' +
+              '<p><strong>Doctor</strong>: ' + doctor + '</p>' +
+              '<p><strong>Name</strong>: ' + name + '</p>' +
+              '<p><strong>Email Address</strong>: ' + email + '</p>' +
+              '<p><strong>Phone Number</strong>: ' + phone + '</p>' +
+              '<p><strong>Message</strong>: ' + message + '</p>'
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+            req.flash('errorMessage', 'Error: the email was not sent. It seems there was a server side problem.');
+        } else {
+          console.log('Email Sent: ' + info.response);
+          req.flash('successMessage', 'Your email has been sent!');
+        }
+        res.redirect('/');
+    });
+  }
 });
 
 // for admins editing specific things on site (no need for signup)

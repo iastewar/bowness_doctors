@@ -6,34 +6,24 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
 
     <script type='text/javascript'>
-      // set simple attributes (not data since it has multiple lines)
-      var page = "<%= page %>";
+      var data = {};
+      // get page data
+      <% data.forEach(function(d) { %>
+        data[<%- JSON.stringify(d.section) %>] = <%- JSON.stringify(d.content) %>;
+      <% }); %>
+
+      // set attribute variables
+      var page = "<%= page %>"
       var doctor = "<%= doctor %>";
       var name = "<%= name %>";
       var email = "<%= email %>";
       var phone = "<%= phone %>";
-      var message = "<%= message %>";
+      var message = <%- JSON.stringify(message) %>;
       var user = <%= user ? true : false %>;
     </script>
   </head>
   <body>
-    <!-- <div class="container">
-      <h1>RAWWR</h1>
-      <p>Welcome</p>
-
-      <form action="/test" method="post">
-        <div class="form-group">
-          <label>Test</label>
-          <input type="text" class="form-control" name="test" autofocus="autofocus">
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-lg">Test</button>
-      </form>
-    </div> -->
-
-
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -59,8 +49,6 @@
                     <a class="office-policy-btn">Office Policy</a>
                 </li>
             </ul>
-
-            <!-- <img class="sidebar-img" src="images/P1110204.jpg"> -->
         </div>
         <!-- /#sidebar-wrapper -->
 
