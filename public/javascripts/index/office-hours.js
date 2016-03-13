@@ -9,7 +9,7 @@ var officeHours =
               "<hr> \
               <h2 class='intro-text text-center'><strong>Office hours</strong></h2> \
               <hr> \
-              <div>" + data['office-policy'] + "</div> \
+              <div>" + data['office-hours'] + "</div> \
           </div> \
       </div> \
   </div>";
