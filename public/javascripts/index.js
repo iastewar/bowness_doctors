@@ -92,49 +92,63 @@ $(function() {
       $("#wrapper").toggleClass("toggled");
   });
 
-  $(".welcome-btn").on("click", function() {
+  $(".welcome-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     welcomeBtn();
     document.title = "Bowness Doctors";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors"},"", "/");
   });
 
-  $(document).on("click", ".contact-us-btn", function() {
+  $(document).on("click", ".contact-us-btn", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     contactUsBtn();
     document.title = "Bowness Doctors - Contact Us";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Contact Us"},"", "/contact-us");
   });
 
-  $(".office-hours-btn").on("click", function() {
+  $(".office-hours-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     officeHoursBtn();
     document.title = "Bowness Doctors - Office Hours";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Office Hours"},"", "/office-hours");
   });
 
-  $(".after-hours-care-btn").on("click", function() {
+  $(".after-hours-care-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     afterHoursBtn();
     document.title = "Bowness Doctors - After Hours Care";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - After Hours Care"},"", "/after-hours-care");
   });
 
-  $(".patient-services-btn").on("click", function() {
+  $(".patient-services-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     patientServicesBtn();
     document.title = "Bowness Doctors - Patient Services";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Patient Services"},"", "/patient-services");
   });
 
-  $(".uninsured-services-btn").on("click", function() {
+  $(".uninsured-services-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     uninsuredServicesBtn();
     document.title = "Bowness Doctors - Uninsured Services";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Uninsured Services"},"", "/uninsured-services");
   });
 
-  $(".office-policy-btn").on("click", function() {
+  $(".office-policy-btn").on("click", function(e) {
+    e.preventDefault();
+
     $("#messages").html("");
     officePolicyBtn();
     document.title = "Bowness Doctors - Office Policy";

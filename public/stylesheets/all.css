@@ -1,8 +1,9 @@
 #loggedInNavbar {
   padding: 5px;
-  background-color: lawngreen;
+  background-color: black;
   margin-bottom: 50px;
   border: 1px solid black;
+  color: #bbbbbb;
 }
 
 #loggedInNavbar form {
