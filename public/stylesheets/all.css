@@ -1,0 +1,18 @@
+#loggedInNavbar {
+  padding: 5px;
+  background-color: lawngreen;
+  margin-bottom: 50px;
+  border: 1px solid black;
+}
+
+#loggedInNavbar form {
+  display: inline-flex;
+}
+
+#loggedInNavbar div {
+  display: inline-flex;
+  float: right;
+  padding: 6px 12px;
+  text-align: center;
+  border-radius: 4px;
+}

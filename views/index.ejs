@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include _head %>
+
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+    <script type='text/javascript'>
+      // set simple attributes (not data since it has multiple lines)
+      var page = "<%= page %>";
+      var doctor = "<%= doctor %>";
+      var name = "<%= name %>";
+      var email = "<%= email %>";
+      var phone = "<%= phone %>";
+      var message = "<%= message %>";
+      var user = <%= user ? true : false %>;
+    </script>
+  </head>
+  <body>
+    <!-- <div class="container">
+      <h1>RAWWR</h1>
+      <p>Welcome</p>
+
+      <form action="/test" method="post">
+        <div class="form-group">
+          <label>Test</label>
+          <input type="text" class="form-control" name="test" autofocus="autofocus">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Test</button>
+      </form>
+    </div> -->
+
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a class="welcome-btn">Welcome</a>
+                </li>
+                <li>
+                    <a class="contact-us-btn">Contact Us</a>
+                </li>
+                <li>
+                    <a class="office-hours-btn">Office Hours</a>
+                </li>
+                <li>
+                    <a class="after-hours-care-btn">After Hours Care</a>
+                </li>
+                <li>
+                    <a class="patient-services-btn">Patient Services</a>
+                </li>
+                <li>
+                    <a class="uninsured-services-btn">Uninsured Services</a>
+                </li>
+                <li>
+                    <a class="office-policy-btn">Office Policy</a>
+                </li>
+            </ul>
+
+            <!-- <img class="sidebar-img" src="images/P1110204.jpg"> -->
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+
+          <% include ./_loggedInNavbar %>
+
+
+          <!-- Navigation -->
+          <nav class="navbar navbar-default row" role="navigation">
+              <div>
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                      <a class="navbar-brand" href="index.html">Dr. Knight | Dr. Visvanatha</a>
+                  </div>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li>
+                            <a class="welcome-btn">Welcome</a>
+                        </li>
+                        <li>
+                            <a class="contact-us-btn">Contact Us</a>
+                        </li>
+                        <li>
+                            <a class="office-hours-btn">Office Hours</a>
+                        </li>
+                        <li>
+                            <a class="after-hours-care-btn">After Hours Care</a>
+                        </li>
+                        <li>
+                            <a class="patient-services-btn">Patient Services</a>
+                        </li>
+                        <li>
+                            <a class="uninsured-services-btn">Uninsured Services</a>
+                        </li>
+                        <li>
+                            <a class="office-policy-btn">Office Policy</a>
+                        </li>
+                      </ul>
+                  </div>
+                  <!-- /.navbar-collapse -->
+              </div>
+              <!-- /.container -->
+          </nav>
+
+          <div id="main-heading" class="brand">Dr. Joan Knight | Dr. Lakshmi Visvanatha</div>
+          <div class="address-bar">
+            <div id="secondary-heading"><strong>Family Physicians</strong></div>
+            <div>
+              104-6404 Bowness Road NW | Calgary, Alberta T3B 0E7 | Phone: 403-288-3733 | Fax: 403-288-8081
+            </div>
+          </div>
+
+          <div id="messages" class="container">
+            <% if (errorMessage.length > 0) { %>
+                <div class="alert alert-danger">
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                  <%= errorMessage %>
+                </div>
+            <% } %>
+
+            <% if (successMessage.length > 0) { %>
+                <div class="alert alert-success">
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                  <%= successMessage %>
+                </div>
+            <% } %>
+          </div>
+
+          <div id="container" class="container"></div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/built/bundle.js"></script> -->
+    <script src="/javascripts/built/bundle.js"></script>
+
+
+  </body>
+</html>

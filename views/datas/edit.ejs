@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../_head %>
+    <script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+  </head>
+  <body>
+    <% include ../_loggedInNavbar %>
+    <div class="container">
+      <h1>Editing <%= data.section %></h1>
+      <form action='/datas/<%= data.section %>/edit' method='post'>
+        <input type='hidden' value='PUT' name='_method'>
+        <div class="form-group">
+          <label name='content'>Content</label>
+          <textarea name='content' id="editor" class='form-control'><%= data.content %></textarea>
+        </div>
+
+        <input type='submit' value='Update' class='btn btn-primary'>
+      </form>
+
+    </div>
+
+    <script>
+      // Replace the <textarea id="editor"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace( 'editor' );
+    </script>
+  </body>
+</html>

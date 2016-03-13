@@ -1,0 +1,12 @@
+<% if (user) { %>
+  <div id="loggedInNavbar">
+    <a class="btn btn-primary" href="/">Home</a>
+    <a class="btn btn-info" href="/resources">Resources</a>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" class="form-control" name="upload">
+      <input type="submit" class="btn btn-warning" value="Upload File">
+    </form>
+    <a style="float: right;" class="btn btn-danger" href="/logout">Log Out</a>
+    <div>Logged in as <%= user.username %></div>
+  </div>
+<% } %>

@@ -1,0 +1,59 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body > div {
+    height: 100%;
+    overflow: scroll;
+}
+
+body {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fb4e7+0,a9e4f7+100 */
+  background: rgb(15,180,231); /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  rgba(15,180,231,1) 0%, rgba(169,228,247,1) 100%) no-repeat center center fixed; /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  rgba(15,180,231,1) 0%,rgba(169,228,247,1) 100%) no-repeat center center fixed; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  rgba(15,180,231,1) 0%,rgba(169,228,247,1) 100%) no-repeat center center fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fb4e7', endColorstr='#a9e4f7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+a {
+  cursor: pointer;
+}
+
+ul, ol {
+  font-size: 1.25em;
+}
+
+#main-heading {
+  font-size: 2.5em;
+  padding-top: 0px;
+}
+
+#secondary-heading {
+  padding-bottom: 10px;
+}
+
+#sidebar-wrapper {
+  /*background-color: #17459b;*/
+}
+
+@media(min-width:768px) {
+  #page-content-wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+#page-content-wrapper {
+  position: relative;
+}
+
+.sidebar-img {
+  width: 250px;
+  height: 187.5px;
+  position: fixed;
+  bottom: 0px;
+}

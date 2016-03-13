@@ -1,0 +1,7 @@
+.resource {
+  cursor: pointer;
+}
+
+.resource:hover {
+  border: 1px solid black;
+}

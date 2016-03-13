@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <% include _head %>
+
+    <link rel="stylesheet" href="/stylesheets/resources.css">
+
+    <script src="/javascripts/resources.js"></script>
+  </head>
+  <body>
+    <% include _loggedInNavbar %>
+    <div class="container">
+      <h1>Resources</h1>
+
+      <div id="messages">
+        <% if (errorMessage.length > 0) { %>
+            <div class="alert alert-danger">
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <%= errorMessage %>
+            </div>
+        <% } %>
+
+        <% if (successMessage.length > 0) { %>
+            <div class="alert alert-success">
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <%= successMessage %>
+            </div>
+        <% } %>
+      </div>
+
+      <% fileNames.forEach(function(fileName) { %>
+        <div class="well resource">
+          <span class="fileName"><%= fileName %></span>
+          <button class="btn btn-danger pull-right delete-btn">Delete</button>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html>
