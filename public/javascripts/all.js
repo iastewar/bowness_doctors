@@ -1,3 +1,3 @@
-$(function() {
-  $("#wrapper").simplebar();
-});
+// $(function() {
+//   $("#wrapper").simplebar();
+// });
