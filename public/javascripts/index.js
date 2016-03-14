@@ -8,31 +8,32 @@ var uninsuredServices = require('./index/uninsured-services');
 // var aboutUs = require('./index/about-us');
 
 var setInitialPage = function() {
-  setPage(page);
+  setPage(page, false);
 }
 
-var setPage = function(p) {
+// set page to p and toggle menu if toggle is true
+var setPage = function(p, toggle) {
   switch (p) {
     case "welcome":
-      welcomeBtn();
+      welcomeBtn(toggle);
       break;
     case "contact-us":
-      contactUsBtn();
+      contactUsBtn(toggle);
       break;
     case "office-hours":
-      officeHoursBtn();
+      officeHoursBtn(toggle);
       break;
     case "after-hours-care":
-      afterHoursBtn();
+      afterHoursBtn(toggle);
       break;
     case "patient-services":
-      patientServicesBtn();
+      patientServicesBtn(toggle);
       break;
     case "uninsured-services":
-      uninsuredServicesBtn();
+      uninsuredServicesBtn(toggle);
       break;
     case "office-policy":
-      officePolicyBtn();
+      officePolicyBtn(toggle);
       break;
   }
 }
@@ -42,38 +43,40 @@ var toggleSmallNavbar = function() {
     $(".navbar-toggle").trigger("click");
 }
 
-var welcomeBtn = function() {
-  toggleSmallNavbar();
+// all button functions take a parameter indicating whether or not the small screen
+// menu gets toggled or not.
+var welcomeBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(welcome);
 }
 
-var contactUsBtn = function() {
-  toggleSmallNavbar();
+var contactUsBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(contactUs);
 }
 
-var officeHoursBtn = function() {
-  toggleSmallNavbar();
+var officeHoursBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(officeHours);
 }
 
-var afterHoursBtn = function() {
-  toggleSmallNavbar();
+var afterHoursBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(afterHoursCare);
 }
 
-var patientServicesBtn = function() {
-  toggleSmallNavbar();
+var patientServicesBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(patientServices);
 }
 
-var uninsuredServicesBtn = function() {
-  toggleSmallNavbar();
+var uninsuredServicesBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(uninsuredServices);
 }
 
-var officePolicyBtn = function() {
-  toggleSmallNavbar();
+var officePolicyBtn = function(toggle) {
+  if (toggle) toggleSmallNavbar();
   $("#container").html(officePolicy);
 }
 
@@ -96,7 +99,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    welcomeBtn();
+    welcomeBtn(true);
     document.title = "Bowness Doctors";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors"},"", "/");
   });
@@ -105,7 +108,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    contactUsBtn();
+    contactUsBtn(true);
     document.title = "Bowness Doctors - Contact Us";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Contact Us"},"", "/contact-us");
   });
@@ -114,7 +117,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    officeHoursBtn();
+    officeHoursBtn(true);
     document.title = "Bowness Doctors - Office Hours";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Office Hours"},"", "/office-hours");
   });
@@ -123,7 +126,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    afterHoursBtn();
+    afterHoursBtn(true);
     document.title = "Bowness Doctors - After Hours Care";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - After Hours Care"},"", "/after-hours-care");
   });
@@ -132,7 +135,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    patientServicesBtn();
+    patientServicesBtn(true);
     document.title = "Bowness Doctors - Patient Services";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Patient Services"},"", "/patient-services");
   });
@@ -141,7 +144,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    uninsuredServicesBtn();
+    uninsuredServicesBtn(true);
     document.title = "Bowness Doctors - Uninsured Services";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Uninsured Services"},"", "/uninsured-services");
   });
@@ -150,7 +153,7 @@ $(function() {
     e.preventDefault();
 
     $("#messages").html("");
-    officePolicyBtn();
+    officePolicyBtn(true);
     document.title = "Bowness Doctors - Office Policy";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Office Policy"},"", "/office-policy");
   });
