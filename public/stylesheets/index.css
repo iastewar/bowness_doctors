@@ -89,3 +89,12 @@ ul, ol {
   position: fixed;
   bottom: 0px;
 }
+
+#noscript-message {
+  border: 1px solid red;
+  color: white;
+  background-color: black;
+  width: 420px;
+  padding: 10px;
+  margin: auto;
+}

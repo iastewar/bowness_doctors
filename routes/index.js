@@ -123,17 +123,21 @@ router.post('/contact', function(req, res) {
   } else {
     // create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
-      service: 'Gmail',
+      port: 587,
+      host: "smtp.homestead.com",
+      tls: {
+           rejectUnauthorized: false
+      },
       auth: {
-        user: 'test@test.com',
-        pass: 'test'
+        user: 'info@bownessdoctors.com',
+        pass: ''
       }
     });
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: name + ' <' + email + '>',
-        to: 'test@test.com',
+        to: 'info@bownessdoctors.com',
         subject: 'Website Submission',
         text: 'You have received an email submission with the following details:\n' +
               'Doctor: ' + doctor + '\n' +
@@ -177,22 +181,22 @@ router.get('/login', function(req, res) {
 });
 
 ////////// make sure to comment this out in production
-router.get('/signup', function(req, res) {
-  res.format({
-    html: function() {
-      res.render('users/signup.ejs', { title: 'Signup', message: req.flash('signupMessage'), user: req.user});
-    },
-    json: function() {
-      res.json({user: req.user});
-    }
-  });
-});
-
-router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/signup',
-  failureFlash: true
-}));
+// router.get('/signup', function(req, res) {
+//   res.format({
+//     html: function() {
+//       res.render('users/signup.ejs', { title: 'Signup', message: req.flash('signupMessage'), user: req.user});
+//     },
+//     json: function() {
+//       res.json({user: req.user});
+//     }
+//   });
+// });
+//
+// router.post('/signup', passport.authenticate('local-signup', {
+//   successRedirect: '/',
+//   failureRedirect: '/signup',
+//   failureFlash: true
+// }));
 //////////
 
 router.post('/login', passport.authenticate('local-login', {
