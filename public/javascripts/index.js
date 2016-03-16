@@ -104,7 +104,16 @@ $(function() {
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors"},"", "/");
   });
 
-  $(document).on("click", ".contact-us-btn", function(e) {
+  $("#container").on("click", ".contact-us-btn-cont", function(e) {
+    e.preventDefault();
+
+    $("#messages").html("");
+    contactUsBtn(false);
+    document.title = "Bowness Doctors - Contact Us";
+    window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Contact Us"},"", "/contact-us");
+  });
+
+  $(".contact-us-btn").on("click", function(e) {
     e.preventDefault();
 
     $("#messages").html("");

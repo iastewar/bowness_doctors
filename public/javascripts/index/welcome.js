@@ -43,7 +43,7 @@ var welcome =
                 We are located in the back of the Hextall Place building. \
                 There is free parking and we have wheelchair access. \
               </p> \
-              <a href='/contact-us' class='btn btn-primary contact-us-btn'>Contact Us</a> \
+              <a href='/contact-us' class='btn btn-primary contact-us-btn-cont'>Contact Us</a> \
           </div> \
           <div class='clearfix'></div> \
       </div> \
