@@ -159,6 +159,6 @@ $(function() {
   });
 
   $("#container").on("click", "#email-send-btn", function() {
-    $(this).text("Sending...")
+    $(this).text("Sending...");
   });
 });
