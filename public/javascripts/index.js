@@ -157,4 +157,8 @@ $(function() {
     document.title = "Bowness Doctors - Office Policy";
     window.history.pushState({"html": document.getElementById('container').innerHTML, "pageTitle": "Bowness Doctors - Office Policy"},"", "/office-policy");
   });
+
+  $("#container").on("click", "#email-send-btn", function() {
+    $(this).text("Sending...")
+  });
 });

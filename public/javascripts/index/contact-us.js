@@ -60,7 +60,7 @@ var contactUs =
                     </div> \
                     <div class='form-group col-lg-12'> \
                         <input type='hidden' name='save' value='contact'> \
-                        <button type='submit' class='btn btn-primary'>Submit</button> \
+                        <button id='email-send-btn' type='submit' class='btn btn-primary'>Send</button> \
                     </div> \
                 </div> \
             </form> \

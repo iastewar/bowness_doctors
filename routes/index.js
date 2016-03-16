@@ -134,6 +134,12 @@ router.post('/contact', function(req, res) {
       }
     });
 
+    var htmlMessage = "";
+    var messageArray = message.split('\n');
+    for (var i = 0; i < messageArray.length; i++) {
+      htmlMessage += "<p>" + messageArray[i] + "</p>";
+    }
+
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: name + ' <' + email + '>',
@@ -150,7 +156,7 @@ router.post('/contact', function(req, res) {
               '<p><strong>Name</strong>: ' + name + '</p>' +
               '<p><strong>Email Address</strong>: ' + email + '</p>' +
               '<p><strong>Phone Number</strong>: ' + phone + '</p>' +
-              '<p><strong>Message</strong>: ' + message + '</p>'
+              '<div><strong>Message</strong>: ' + htmlMessage + '</div>'
     };
 
     // send mail with defined transport object
