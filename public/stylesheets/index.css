@@ -98,3 +98,7 @@ ul, ol {
   padding: 10px;
   margin: auto;
 }
+
+.navbar-brand-small:hover,  .navbar-brand-small:focus{
+  color: #777 !important;
+}
